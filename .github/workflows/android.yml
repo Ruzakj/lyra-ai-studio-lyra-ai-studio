@@ -25,9 +25,16 @@ jobs:
           npm init -y
           npm install @capacitor/core @capacitor/cli @capacitor/android
 
+      - name: Prepare web assets
+        run: |
+          mkdir -p www
+          cp index.html www/index.html
+          cp -R src www/src
+          cp -R characters www/characters
+
       - name: Initialize Capacitor
         run: |
-          npx cap init "Shinobi Clash" "com.shinobiclash.game" --web-dir=.
+          npx cap init "Shinobi Clash" "com.shinobiclash.game" --web-dir=www
           npx cap add android
 
       - name: Sync web app to Android
