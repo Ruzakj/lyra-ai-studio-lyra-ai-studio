@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shinobi Clash — 2D Arena</title>
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div><strong>SHINOBI CLASH</strong><span> 2D ARENA</span></div>
+      <div class="hint">WASD / Arrows • J Attack • K Skill • L Ultimate • Space Dash</div>
+    </header>
+    <main>
+      <canvas id="game" width="1280" height="720"></canvas>
+      <div id="menu" class="panel">
+        <h1>Shinobi Clash</h1>
+        <p>Original 2D ninja arena inspired by classic lane-battle games.</p>
+        <button id="start">START BATTLE</button>
+      </div>
+      <div id="hud" class="hud hidden">
+        <div class="barbox"><label>HP</label><div class="bar"><i id="hp"></i></div></div>
+        <div class="barbox mana"><label>ENERGY</label><div class="bar"><i id="energy"></i></div></div>
+        <div class="skills"><b>J</b><b>K</b><b>L</b><b>SPACE</b></div>
+        <div class="score">K/O <span id="score">0</span></div>
+      </div>
+    </main>
+  </div>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
