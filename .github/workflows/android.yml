@@ -8,9 +8,6 @@ on:
 permissions:
   contents: read
 
-env:
-  NODE_VERSION: '20'
-
 jobs:
   build-apk:
     runs-on: ubuntu-latest
@@ -21,13 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: npm
-
-      - name: Create package.json
-        run: |
-          node -e "let p=require('./package.json'); p.scripts=p.scripts||{}; p.scripts.build=p.scripts.build||'echo web-build-ready'; require('fs').writeFileSync('package.json',JSON.stringify(p,null,2))"
-        continue-on-error: true
+          node-version: '24'
 
       - name: Install Capacitor
         run: |
@@ -55,7 +46,7 @@ jobs:
         working-directory: android
         run: ./gradlew assembleDebug --no-daemon
 
-      - name: Upload APK
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: shinobi-clash-debug-apk
